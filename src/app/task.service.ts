@@ -44,20 +44,20 @@ export class TaskService {
 
   //delete a task list
   //http://localhost:3000/tasklists/6344b693a28df67457a40a2a
-  deleteTaskList(taskListId: string){
-    return this.apiConfigService.delete(`tasklists/${taskListId}`);
+  deleteTaskList(taskListId: string): Observable<TaskListModel>{
+    return this.apiConfigService.deleteTaskList(`tasklists/${taskListId}`);
   }
 
   //delete a task inside a particular task list
   //http://localhost:3000/tasklists/63443568b45e694fce0331c5/tasks/63448b06618c134657c8c306
-  deleteATaskInsideATaskList(taskListId: string, taskId: string){
-    return this.apiConfigService.delete(`tasklists/${taskListId}/tasks/${taskId}`);
+  deleteATaskInsideATaskList(taskListId: string, taskId: string): Observable<TaskModel>{
+    return this.apiConfigService.deleteTask(`tasklists/${taskListId}/tasks/${taskId}`);
   }
 
   //update the status of a task wheather its compleated or not
   //http://localhost:3000/tasklists/63443568b45e694fce0331c5/tasks/63448b06618c134657c8c306
-  updateTaskStatus(taskListId: string, taskObject: TaskModel){
+  updateTaskStatus(taskListId: string, taskObject: TaskModel): Observable<TaskModel>{  /*instead of Observable<TaskModel> I used here Observable<any> */
     let updateData = {"completed": !taskObject.completed}; // use '!' to toggle the database value
-    return this.apiConfigService.patch(`tasklists/${taskListId}/tasks/${taskObject._id}`, updateData)
+    return this.apiConfigService.patchAsPut(`tasklists/${taskListId}/tasks/${taskObject._id}`, updateData);
   }
 }
