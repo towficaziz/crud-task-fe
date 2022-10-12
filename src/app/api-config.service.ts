@@ -30,12 +30,16 @@ export class ApiConfigService {
   put(url: string, data: Object){
     return this.httpClient.put(`${this.API_BASE_URL}/${url}`, data);
   }
-
-  patch(url: string, data: Object){
-    return this.httpClient.patch(`${this.API_BASE_URL}/${url}`, data);
+ //Update 1 task belonging 1 TaskList
+  patchAsPut(url: string, data: Object){  /* her in put<TaskModel> called because patch<TaskModel> gives error */
+    return this.httpClient.put<TaskModel>(`${this.API_BASE_URL}/${url}`, data);
   }
 
-  delete(url: string){
-    return this.httpClient.delete(`${this.API_BASE_URL}/${url}`);
+  deleteTask(url: string){
+    return this.httpClient.delete<TaskModel>(`${this.API_BASE_URL}/${url}`);
+  }
+
+  deleteTaskList(url: string){
+    return this.httpClient.delete<TaskListModel>(`${this.API_BASE_URL}/${url}`);
   }
 }

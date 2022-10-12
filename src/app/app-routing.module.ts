@@ -3,7 +3,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  {path: "", component: TaskScreenComponent},
+  {path: "", redirectTo: "task-list", pathMatch:"full"},
+  {path: "task-list", component: TaskScreenComponent},
   {path: "task-list/:taskListId", component: TaskScreenComponent},
 ];
 
