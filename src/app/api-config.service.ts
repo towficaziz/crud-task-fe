@@ -24,7 +24,7 @@ export class ApiConfigService {
 
 
   post(url: string, data: Object){
-    return this.httpClient.post(`${this.API_BASE_URL}/${url}`, data); //http://localhost:3000/tasklists
+    return this.httpClient.post<TaskListModel>(`${this.API_BASE_URL}/${url}`, data); //http://localhost:3000/tasklists
   }
 
   put(url: string, data: Object){

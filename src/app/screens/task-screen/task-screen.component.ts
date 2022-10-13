@@ -63,4 +63,14 @@ export class TaskScreenComponent implements OnInit {
     });
   }
 
+  addNewTask(){
+    if(this.taskListId){
+      //route the user to add task screen for the selected task-list
+      this.router.navigate(['./new-task'],{relativeTo: this.activatedRoute});
+    }else{
+      alert("Please select a task list!");
+      return;
+    }
+  }
+
 }
