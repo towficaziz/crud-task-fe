@@ -30,3 +30,4 @@ export class NewTaskListScreenComponent implements OnInit {
     }
   }
 }
+/* finish the frontend and api */
