@@ -10,7 +10,7 @@ import TaskModel from './models/taskModel';
 })
 export class ApiConfigService {
 
-  API_BASE_URL = "http://localhost:3000";
+  API_BASE_URL = "https://tazizmeanexpress.azurewebsites.net"; //http://localhost:3000
   constructor(private httpClient: HttpClient) { }
 
   //API call to backend
